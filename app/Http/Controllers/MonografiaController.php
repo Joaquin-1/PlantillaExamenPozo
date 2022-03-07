@@ -116,7 +116,8 @@ class MonografiaController extends Controller
     public function autores(Monografia $monografia)
     {
         return view('monografias.autores', [
-            'monografia' => $monografia->with('articulos.autores')->first(),
+            'monografia' => $monografia,
         ]);
+
     }
 }

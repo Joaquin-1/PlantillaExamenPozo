@@ -13,34 +13,26 @@
                         <table class="table-auto">
                             <thead>
                                 <th class="px-6 py-2 text-gray-500">
-                                    Titulo
+                                    Titulo Monografia
                                 </th>
                                 <th class="px-6 py-2 text-gray-500">
-                                    Anyo
-                                </th>
-                                <th class="px-6 py-2 text-gray-500">
-                                    autor
+                                    Autor/es
                                 </th>
 
                             </thead>
                             <tbody>
                                 {{-- {{ dd($monografia)}} --}}
-                                        {{ $pruebas = $monografia->articulos[1]->with(['autores'])->get()}}
-                                        @foreach ($pruebas as $prueba)
-                                            {{$margaritas = $prueba->autores}}
-                                            @foreach ($margaritas as $margarita)
-                                                <tr>
-                                                    <td class="px-6 py-2">{{ $monografia->titulo}}</td>
-                                                    <td class="px-6 py-2">{{ $monografia->anyo}}</td>
-                                                    {{-- {{dd($margarita)}} --}}
-                                                    <td class="px-6 py-2">{{ $margarita->nombre}}</td>
-                                                </tr>
+                                <tr>
+                                    <td class="px-6 py-2">{{ $monografia->titulo }}</td>
+                                    <td class="px-6 py-2">
+                                        @foreach ($monografia->articulos as $articulo)
+                                        {{-- {{dd($articulo->autores)}} ctrl+Mayus+7 --}}
+                                            @foreach ($articulo->autores as $autor)
+                                                <p>{{ $autor->nombre}}</p>
                                             @endforeach
-                                            {{-- <td class="px-6 py-2">{{ $pruebas->autores}}</td> --}}
-
                                         @endforeach
-                                        {{-- <td class="px-6 py-2">{{ }}</td> --}}
-
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                     </x-monografias>
